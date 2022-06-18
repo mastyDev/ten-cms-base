@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { Avatar, IconButton } from "@material-ui/core";
-import styled from "styled-components"
-import Image from 'next/image'
+import { Avatar, IconButton, Button } from "@material-ui/core";
+import styled from "styled-components";
+import Image from 'next/image';
 import Logo from '../public/logoDark.svg';
 import NotifyBadge from '../contexts/NotifyBadge';
+import ProfileMenuPopup from '../contexts/ProfileMenuPopup';
 
 import {useAuthState} from "react-firebase-hooks/auth";
 // import { useCollection } from "react-firebase-hooks/firestore";
@@ -17,8 +18,12 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import CloseIcon from '@mui/icons-material/Close';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+
+
 
 export default function Navbar() {
+    const [profileMenu, setProfileMenu] = useState(false);
     const [user] = useAuthState(auth);
     const [search, setSearch] = useState('');
 
@@ -50,23 +55,23 @@ export default function Navbar() {
         <Profile_Container>
             <IconsContainer>
                     <IconButton>
-                        <NotifyBadge bg={'#F34141'} value={'3'}/>
+                        <NotifyBadge bg={'#F34141'} value={''}/>
                         <MailOutlineIcon style={{color: "whitesmoke", marginTop: '10px'}}/>
                     </IconButton>
                     
                     <IconButton>
-                        <NotifyBadge bg={'#2699FB'} value={'9'}/>
+                        <NotifyBadge bg={'#2699FB'} value={''}/>
                         <NotificationsNoneIcon style={{color: "whitesmoke", marginTop: '10px'}}/>
                     </IconButton>
             </IconsContainer>
-            
             <Profile_Menu>
-                <p id='profile'>{user.displayName}<KeyboardArrowDownIcon/></p>
+            {profileMenu 
+                ?<ProfileMenu onClick={() => setProfileMenu(false)}>{user.displayName}<KeyboardArrowUpIcon/></ProfileMenu>
+                :<ProfileMenu onClick={() => setProfileMenu(true)}>{user.displayName}<KeyboardArrowDownIcon/></ProfileMenu>
+            }
+            {profileMenu && (<ProfileMenuPopup/>)}
             </Profile_Menu>
-            <UserAvatar src={user.photoURL} onClick={() => {
-                auth.signOut()
-                console.log(user.displayName+' has been signed out')
-            }}/> 
+            <UserAvatar src={user.photoURL} /> 
         </Profile_Container>
     </Nav_Container>
   )
@@ -85,7 +90,7 @@ const Nav_Container = styled.div`
     align-items: center;
     padding: 1rem;
     padding-left: 0;
-    z-index: 10;
+    z-index: 20;
 
     p#icon-label {
         margin-left: .5rem;
@@ -172,16 +177,19 @@ const Profile_Menu = styled.div`
     align-items: center;
     cursor: pointer;
     color: rgba(255, 255, 255, 0.9);
+`;
 
-    p#profile {
-        display: flex;
-        align-items: center;
-        font-weight: 600;
-        color: rgba(255, 255, 255, .7);
-        :hover {
-            color: white;
-        }
+const ProfileMenu = styled(Button)`
+&&& {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    text-transform: none;
+    color: rgba(255, 255, 255, .7);
+    :hover {
+        color: white;
     }
+}
 `;
 
 const IconsContainer = styled.div`
@@ -192,5 +200,4 @@ const IconsContainer = styled.div`
 const UserAvatar = styled(Avatar)`
     border: 1px solid rgba(255, 255, 255, 0.35);
     margin: 0 .5rem;
-    cursor: pointer;
 `;

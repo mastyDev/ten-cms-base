@@ -2,45 +2,36 @@ import styled from 'styled-components';
 import { Button } from "@material-ui/core";
 import Link from 'next/link'
 //icons import
-import CurrencyExchangeOutlinedIcon from '@mui/icons-material/CurrencyExchangeOutlined';
-import InsertDriveFileOutlinedIcon from '@mui/icons-material/InsertDriveFileOutlined';
-import LiveHelpIcon from '@mui/icons-material/LiveHelp';
-import LockIcon from '@mui/icons-material/Lock';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import PinDropIcon from '@mui/icons-material/PinDrop';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
-import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined';
+import { RiDashboardFill, RiAccountBoxFill, RiMapPin2Line, RiFile2Line, RiLockPasswordFill } from 'react-icons/ri';	
+import { BiCalendar, BiCreditCard, BiSupport, BiSliderAlt, BiChat } from 'react-icons/bi';
 
 export default function Sidebar() {
-
     return (
     <Sidebar_Container>
         <Menu_Container>
                 <span id='spacer'/>
             <Link href='/home'><MenuButton>
-                <DashboardIcon className='mg-r-10'/>Dashboard</MenuButton></Link>
+                <RiDashboardFill className='mg-r-10'/>Dashboard</MenuButton></Link>
             <Link href='/calendar'><MenuButton>
-                <CalendarMonthIcon className='mg-r-10'/>Calendar</MenuButton></Link>
+                <BiCalendar className='mg-r-10'/>Calendar</MenuButton></Link>
             <Link href='/map'><MenuButton>
-                <PinDropIcon className='mg-r-10'/>Map</MenuButton></Link>
+                <RiMapPin2Line className='mg-r-10'/>Map</MenuButton></Link>
                 <span id='spacer'/>
             <Link href='/accounts'><MenuButton>
-                <AccountCircleIcon className='mg-r-10'/>Accounts</MenuButton></Link>
+                <RiAccountBoxFill className='mg-r-10'/>Accounts</MenuButton></Link>
             <Link href='/transactions'><MenuButton>
-                <CurrencyExchangeOutlinedIcon className='mg-r-10'/>Transactions</MenuButton></Link>
+                <BiCreditCard className='mg-r-10'/>Transactions</MenuButton></Link>
             <Link href='/support'><MenuButton>
-                <LiveHelpIcon className='mg-r-10'/>Tickets & Support</MenuButton></Link>
+                <BiSupport className='mg-r-10'/>Tickets & Support</MenuButton></Link>
                 <span id='spacer'/>
-            <Link href='/documents'><MenuButton>
-                <InsertDriveFileOutlinedIcon className='mg-r-10'/>Documentation</MenuButton></Link>
-            <Link href='/register'><MenuButton>
-                <LockIcon className='mg-r-10'/>Login & Registration</MenuButton></Link>
             <Link href='/chat'><MenuButton>
-                <ChatOutlinedIcon className='mg-r-10'/>Chat</MenuButton></Link>
+                <BiChat className='mg-r-10'/>Chat</MenuButton></Link>
+            <Link href='/documents'><MenuButton>
+                <RiFile2Line className='mg-r-10'/>Documentation</MenuButton></Link>
+            <Link href='/register'><MenuButton>
+                <RiLockPasswordFill className='mg-r-10'/>Login & Registration</MenuButton></Link>
             <Link href='/admin'><MenuButton>
-                <AdminPanelSettingsIcon className='mg-r-10'/>Admin Panel</MenuButton></Link>
+                <BiSliderAlt className='mg-r-10'/>Admin Panel</MenuButton></Link>
         </Menu_Container>
     </Sidebar_Container>
   )
