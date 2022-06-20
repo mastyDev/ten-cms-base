@@ -2,7 +2,7 @@ import Head from 'next/head'
 import styled from "styled-components";
 import LiveHelpOutlinedIcon from '@mui/icons-material/LiveHelpOutlined';
 
-export default function support() {
+export default function Support() {
   return (
     <Home_Container>
         <Head><title>TEN | Support</title></Head>

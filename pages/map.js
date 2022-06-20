@@ -2,7 +2,7 @@ import Head from 'next/head'
 import styled from "styled-components";
 import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
 
-export default function map() {
+export default function Map() {
   return (
     <Home_Container>
         <Head><title>TEN | Map</title></Head>

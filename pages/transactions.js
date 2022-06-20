@@ -2,7 +2,7 @@ import Head from 'next/head'
 import styled from "styled-components";
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 
-export default function transactions() {
+export default function Transactions() {
   return (
     <Home_Container>
         <Head><title>TEN | Transactions</title></Head>

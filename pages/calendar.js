@@ -2,7 +2,7 @@ import Head from 'next/head'
 import styled from "styled-components";
 import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
 
-export default function calendar() {
+export default function Calendar() {
   return (
     <Home_Container>
         <Head><title>TEN | Calendar</title></Head>

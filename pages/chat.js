@@ -8,7 +8,7 @@ import TagIcon from '@mui/icons-material/Tag';
 import { useSelector } from 'react-redux';
 import { selectRoomId } from '../store/chatStore';
 
-export default function chat() {
+export default function Chat() {
     const roomId = useSelector(selectRoomId)
     
     return (

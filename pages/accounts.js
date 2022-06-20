@@ -2,7 +2,7 @@ import Head from 'next/head'
 import styled from "styled-components";
 import SwitchAccountIcon from '@mui/icons-material/SwitchAccount';
 
-export default function accounts() {
+export default function Accounts() {
   return (
     <Home_Container>
         <Head><title>TEN | Accounts</title></Head>

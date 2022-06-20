@@ -2,7 +2,7 @@ import Head from 'next/head'
 import styled from "styled-components";
 import InsertDriveFileOutlinedIcon from '@mui/icons-material/InsertDriveFileOutlined';
 
-export default function documents() {
+export default function Documents() {
   return (
     <Home_Container>
         <Head><title>TEN | Documents</title></Head>
