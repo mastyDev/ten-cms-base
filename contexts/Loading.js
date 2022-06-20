@@ -1,20 +1,16 @@
-import styled from "styled-components"
 import Head from "next/head"
-import { ThreeBounce } from "better-react-spinkit";
+import { Circle } from 'better-react-spinkit'
+
 export default function Loading() {
   return (
-    <Container>
-        <Head><title>Loading...</title></Head>
-        <ThreeBounce color="#121B26" radius={1000}/>
-    </Container>
+    <>
+    <Head><title>TEN | Loading...</title></Head>
+    <Circle size={32} color='var(--darkest-blue)' style={{
+            height:'100vh', 
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }} />
+    </>
   )
 }
-
-const Container = styled.div`
-    display: flex;
-    height: 100vh;
-    padding: 0;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-`;

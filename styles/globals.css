@@ -1,11 +1,28 @@
+@font-face {
+  font-family: 'Calibri';
+  src: local('Calibri'),
+       url('../data/calibri.ttf') format('ttf');
+}
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Calibri', sans-serif;
+  background-color: white;
+  overflow: hidden;
 
-  background-color: whitesmoke;
+  /* vaiables */
+  --navbar-blue: #121B26; 
+  --darkest-blue: #1f2630;
+  --dark-blue: #1b293a;
+  --light-blue: #2699FB;
+  --light-green: #a4ffa0;
+  --side-option: red;
+  --chat-color: #F5F5;
+  --chat-icon: #555;
+  --chat-menu: #777;
+  --chat-add: #999;
+  --google-red: #F34141;
 }
 
 a {
@@ -15,11 +32,6 @@ a {
 
 * {
   box-sizing: border-box;
-}
-
-.mg-r-10 {
-  margin-right: 10px;
-  font-size: 20px;
 }
 
 .fade-in {

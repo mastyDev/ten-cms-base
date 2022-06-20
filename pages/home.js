@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import styled from "styled-components";
-import Navbar from "../components/Navbar";
+
 import Sidebar from "../components/Sidebar";
 import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
 
@@ -8,9 +8,9 @@ export default function Dashboard() {
   return (
     <Home_Container>
         <Head><title>TEN | Home</title></Head>
-        <Navbar/>
+        
         <Main_Container>
-            <Sidebar/>
+            {/* <Sidebar/> */}
             <TempDiv className="fade-in">
                 <DashboardOutlinedIcon fontSize="large"/>
                 <p>Dashboard</p>
@@ -36,25 +36,22 @@ const Main_Container = styled.div`
     flex:1;
     min-height: calc(100vh - 70px);
     width: 100%;
-    padding: 2rem;
+    /* padding: 2rem; */
     padding-left: 0;
     `;
 
 const TempDiv = styled.div`
-
-    background-color: white;
-    display: flex;
+    /* border: 1px solid red; */
+display: flex;
     flex: 1;
     flex-direction: column;
-    border-radius: 30px;
     width: 100%;
     height: 100%;
     justify-content: center;
     align-items: center;
-    /* padding: 2rem; */
+
     color: #bbb;
     font-size: 20px;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
     p {
         padding: 0;
         margin: .5rem 0;

@@ -1,16 +1,12 @@
 import Head from 'next/head'
 import styled from "styled-components";
-import Navbar from "../components/Navbar";
-import Sidebar from "../components/Sidebar";
 import SwitchAccountIcon from '@mui/icons-material/SwitchAccount';
 
 export default function accounts() {
   return (
     <Home_Container>
         <Head><title>TEN | Accounts</title></Head>
-        <Navbar/>
         <Main_Container>
-            <Sidebar/>
             <TempDiv className="fade-in">
                 <SwitchAccountIcon fontSize="large"/>
                 <p>Accounts</p>
@@ -36,13 +32,11 @@ const Main_Container = styled.div`
     flex:1;
     min-height: calc(100vh - 70px);
     width: 100%;
-    padding: 2rem;
     padding-left: 0;
     `;
 
 const TempDiv = styled.div`
 
-    background-color: white;
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -51,10 +45,9 @@ const TempDiv = styled.div`
     height: 100%;
     justify-content: center;
     align-items: center;
-    /* padding: 2rem; */
+
     color: #bbb;
     font-size: 20px;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
     p {
         padding: 0;
         margin: .5rem;

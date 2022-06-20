@@ -22,10 +22,10 @@ const Main_Container = styled.div`
     top: 70px;
     left: 0;
     width: 100%;
-    background-color: rgba(0, 0, 0, .1);
+    background-color: rgba(127, 137, 147, .2);
     height: calc(100vh - 70px);
-
 `;
+
 const Constainer = styled.div`
     position: absolute;
     display: flex;

@@ -9,8 +9,8 @@ import ProfileMenuPopup from '../contexts/ProfileMenuPopup';
 import {useAuthState} from "react-firebase-hooks/auth";
 // import { useCollection } from "react-firebase-hooks/firestore";
 import { auth, db } from "../firebase";
-
-import MenuIcon from '@mui/icons-material/Menu';
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import DownloadIcon from '@mui/icons-material/Download';
 import AnalyticsIcon from '@mui/icons-material/Analytics';
 import SearchIcon from '@mui/icons-material/Search';
@@ -32,9 +32,9 @@ export default function Navbar() {
 
         <Header>
             <Logo_Container>
-                <LogoImage src={Logo}/>
+                <LogoImage src={Logo}/><span>ver a0.3</span>
             </Logo_Container>
-            <IconButton><MenuIcon style={{color: "rgba(255, 255, 255, 0.7)"}}/></IconButton>
+            <IconButton><MenuOpenIcon style={{color: "rgba(255, 255, 255, 0.7)"}}/></IconButton>
         </Header>
 
         <Search_Container>
@@ -55,12 +55,14 @@ export default function Navbar() {
         <Profile_Container>
             <IconsContainer>
                     <IconButton>
-                        <NotifyBadge bg={'#F34141'} value={''}/>
-                        <MailOutlineIcon style={{color: "whitesmoke", marginTop: '10px'}}/>
+                        {/* <NotifyBadge bg={'#F34141'} value={'1'}/> */}
+                        <MailDot style={{color: "var(--google-red)"}}/>
+                         <MailOutlineIcon style={{color: "whitesmoke", marginTop: '10px'}}/>
                     </IconButton>
                     
                     <IconButton>
-                        <NotifyBadge bg={'#2699FB'} value={''}/>
+                        {/* <NotifyBadge bg={'#2699FB'} value={'1'}/> */}
+                        <BellDot style={{color: "orange"}}/>
                         <NotificationsNoneIcon style={{color: "whitesmoke", marginTop: '10px'}}/>
                     </IconButton>
             </IconsContainer>
@@ -71,7 +73,10 @@ export default function Navbar() {
             }
             {profileMenu && (<ProfileMenuPopup/>)}
             </Profile_Menu>
-            <UserAvatar src={user.photoURL} /> 
+            <Avatar_Container>
+                <FiberManualRecordIcon />
+                <UserAvatar src={user.photoURL}></UserAvatar> 
+            </Avatar_Container>    
         </Profile_Container>
     </Nav_Container>
   )
@@ -79,18 +84,18 @@ export default function Navbar() {
 
 const Nav_Container = styled.div`
     /* border: 1px solid red; */
-    /* border-bottom: 1px solid #ddd; */
-    background-color: #121B26;
+    background-color: var(--navbar-blue);
     display: flex !important;
-    position: sticky;
-    top: 0;
+    position: relative;
+    /* top: 0; */
     width: 100%;
     height: 70px;
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
     padding-left: 0;
-    z-index: 20;
+    z-index: 11;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 
     p#icon-label {
         margin-left: .5rem;
@@ -102,7 +107,7 @@ const Nav_Container = styled.div`
 
 const Header = styled.div`
     /* border: 1px solid red; */
-    background-color: #121B26;
+    background-color: var(--navbar-blue);
     display: flex;
     height: 70px;
     width: 250px;
@@ -122,6 +127,11 @@ const Logo_Container = styled.div`
     width: 100%;
     padding-left: 2rem;
     height: 40px;
+    color: rgba(255,255,255,0.3);
+    align-items: flex-end; // version alignment
+    span {
+        margin-left: 10px;
+    }
 `;
 
 const LogoImage = styled(Image)`
@@ -131,30 +141,30 @@ const LogoImage = styled(Image)`
 const SearchBox = styled.form`
     /* border: 1px solid red; */
     display: flex;
-    height: 49px;
+    height: 39px;
     align-items: center;
     justify-content: center;
     margin: 0 1rem;
-    background-color: #29313c;
+    background-color: var(--dark-blue);
     border-radius: 50px;
 `;
 
 const SearchInput = styled.input`
-    background-color:#253140;
+    background-color: var(--dark-blue);
     border: 0;
     outline: none;
     font-size: 16px;
     color: grey;
-    padding: 0 10px;
+    padding: .5rem 10px;
     /* padding-left: 1rem; */
     /* margin-left: .5rem; */
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.9);
 `;
 
 const SearchButton = styled(IconButton)`
     &&& {
         color: white;
-        background-color: #253140;
+        /* background-color: #253140; */
     }
 `;
 
@@ -197,7 +207,35 @@ const IconsContainer = styled.div`
     display: flex;
     padding: 0 1rem;
 `;
+
+const Avatar_Container = styled.div`
+    .MuiSvgIcon-root {
+        position: absolute;
+        z-index: 100;
+        top: 10px;
+        right: 40px;
+        color: var(--light-green);
+        padding: 2px;
+    }
+`;
+
 const UserAvatar = styled(Avatar)`
     border: 1px solid rgba(255, 255, 255, 0.35);
     margin: 0 .5rem;
+`;
+
+const MailDot = styled(FiberManualRecordIcon)`
+    position: absolute;
+    z-index: 100;
+    top: 15px;
+    right: 0px;
+    padding: 5px;
+`;
+
+const BellDot = styled(FiberManualRecordIcon)`
+    position: absolute;
+    z-index: 100;
+    top: 15px;
+    right: 5px;
+    padding: 5px;
 `;

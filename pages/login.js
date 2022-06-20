@@ -12,7 +12,7 @@ export default function Login() {
 
   return (
     <Container className="fade-in">
-        <Head><title>mastyDev/Login</title></Head>
+        <Head><title>TEN | Login</title></Head>
 
         <LoginContainer className="login_Container">
             <ImageContainer>
@@ -23,7 +23,7 @@ export default function Login() {
             <LoginButton variant="outlined">Sign in</LoginButton>
             <Page>- or -</Page> */}
             <GoogleButton onClick={SignIn} className="login-with-google-btn">Sign in with Google</GoogleButton>
-            <Page>Ver alpha 0.2</Page>
+            <Page>ver a0.3</Page>
             {/* <Page>You don't have an account? <a href="#">Register here</a></Page> */}
             <Page id='copyright'><a>&copy;2022 @MastyDev</a></Page>
         </LoginContainer>

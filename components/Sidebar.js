@@ -1,37 +1,36 @@
 import styled from 'styled-components';
 import { Button } from "@material-ui/core";
 import Link from 'next/link'
+import SideOption from "../contexts/SideOption";
 //icons import
-import { RiDashboardFill, RiAccountBoxFill, RiMapPin2Line, RiFile2Line, RiLockPasswordFill } from 'react-icons/ri';	
-import { BiCalendar, BiCreditCard, BiSupport, BiSliderAlt, BiChat } from 'react-icons/bi';
+import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
+import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
+import MapIcon from '@mui/icons-material/Map';
+import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
+import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
+import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import ForumOutlinedIcon from '@mui/icons-material/ForumOutlined';
+import FileCopyIcon from '@mui/icons-material/FileCopy';
+import PasswordIcon from '@mui/icons-material/Password';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 
 export default function Sidebar() {
     return (
     <Sidebar_Container>
         <Menu_Container>
-                <span id='spacer'/>
-            <Link href='/home'><MenuButton>
-                <RiDashboardFill className='mg-r-10'/>Dashboard</MenuButton></Link>
-            <Link href='/calendar'><MenuButton>
-                <BiCalendar className='mg-r-10'/>Calendar</MenuButton></Link>
-            <Link href='/map'><MenuButton>
-                <RiMapPin2Line className='mg-r-10'/>Map</MenuButton></Link>
-                <span id='spacer'/>
-            <Link href='/accounts'><MenuButton>
-                <RiAccountBoxFill className='mg-r-10'/>Accounts</MenuButton></Link>
-            <Link href='/transactions'><MenuButton>
-                <BiCreditCard className='mg-r-10'/>Transactions</MenuButton></Link>
-            <Link href='/support'><MenuButton>
-                <BiSupport className='mg-r-10'/>Tickets & Support</MenuButton></Link>
-                <span id='spacer'/>
-            <Link href='/chat'><MenuButton>
-                <BiChat className='mg-r-10'/>Chat</MenuButton></Link>
-            <Link href='/documents'><MenuButton>
-                <RiFile2Line className='mg-r-10'/>Documentation</MenuButton></Link>
-            <Link href='/register'><MenuButton>
-                <RiLockPasswordFill className='mg-r-10'/>Login & Registration</MenuButton></Link>
-            <Link href='/admin'><MenuButton>
-                <BiSliderAlt className='mg-r-10'/>Admin Panel</MenuButton></Link>
+            <span id='spacer'/>
+            <SideOption url='/home' Icon={DashboardOutlinedIcon} title="Dashboard"/>
+            <SideOption url='/calendar' Icon={CalendarMonthOutlinedIcon} title="Calendar"/>
+            <SideOption url='/map' Icon={MapIcon} title="Map"/>
+            <span id='spacer'/>
+            <SideOption url='/accounts' Icon={AssignmentIndIcon} title="Accounts"/>
+            <SideOption url='/transactions' Icon={CurrencyExchangeIcon} title="Transactions"/>
+            <SideOption url='/support' Icon={SupportAgentIcon} title="Support"/>
+            <span id='spacer'/>
+            <SideOption url='/chat' Icon={ForumOutlinedIcon} title="Chat"/>
+            <SideOption url='/documents' Icon={FileCopyIcon} title="Documentation"/>
+            <SideOption url='/register' Icon={PasswordIcon} title="Users Data"/>
+            <SideOption url='/admin' Icon={AdminPanelSettingsIcon} title="Admin Panel"/>
         </Menu_Container>
     </Sidebar_Container>
   )
@@ -43,14 +42,16 @@ const Sidebar_Container = styled.div`
     display: flex !important;
     flex-direction: column;
     position: relative;
-    height: 100%;
     width: 250px;
+    height: calc(100vh - 70px);
     top: 0px;
     left: 0px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, 
+                rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 `;
 
 const Menu_Container = styled.div`
-    height: calc(100vh - 160px) !important;
+    height: calc(100vh - 70px) !important;
     display:flex;
     justify-content:flex-start;
     align-items: flex-start;
@@ -62,12 +63,10 @@ const Menu_Container = styled.div`
     span#spacer {
         /* border: 1px solid red; */
         display: flex;
-        color: #bbb;
         justify-content: center;
         align-items: center;
         width: 100%;
         height: 2rem;
-        margin:0 1rem;
     }
 `;
 
@@ -83,5 +82,14 @@ const MenuButton = styled(Button)`
         
         margin: .3rem 0;
         padding-left: 2rem;
-    }    
+
+        &:hover {
+            background-color: whitesmoke
+        }
+        >.MuiSvgIcon-root {
+            margin-right: 1px !important;
+            font-size: 52px;
+            color: yellowgreen;
+        }    
+    }
 `;

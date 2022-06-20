@@ -1,20 +1,27 @@
 import Head from 'next/head'
 import styled from "styled-components";
-import Navbar from "../components/Navbar";
-import Sidebar from "../components/Sidebar";
-import ForumOutlinedIcon from '@mui/icons-material/ForumOutlined';
+import SidebarChat from "../components/SidebarChat";
+
+import ChannelWindow from "../components/ChannelWindow";
+import TagIcon from '@mui/icons-material/Tag';
+
+import { useSelector } from 'react-redux';
+import { selectRoomId } from '../store/chatStore';
 
 export default function chat() {
-  return (
+    const roomId = useSelector(selectRoomId)
+    
+    return (
     <Home_Container>
         <Head><title>TEN | Chat</title></Head>
-        <Navbar/>
         <Main_Container>
-            <Sidebar/>
-            <TempDiv className="fade-in">
-                <ForumOutlinedIcon fontSize="large"/>
-                <p>Chat</p>
-            </TempDiv>
+            <Chat_Container className="fade-in">
+                <SidebarChat/>
+                {roomId 
+                ? (<ChannelWindow />)
+                : (<ChannelContainer><EmptyInfo><TagIcon/>Select a channel</EmptyInfo></ChannelContainer>)
+                }
+            </Chat_Container>
         </Main_Container>
     </Home_Container>
   )
@@ -24,10 +31,10 @@ const Home_Container = styled.div`
     /* border: 1px solid red; */
     display:flex;
     flex:1;
-    height: 100vh;
+    height: calc(100vh - 70px);
     flex-direction:column;
     justify-content: center;
-    align-items: center;
+    /* align-items: flex-end; */
 `;
 
 const Main_Container = styled.div`
@@ -36,27 +43,47 @@ const Main_Container = styled.div`
     flex:1;
     min-height: calc(100vh - 70px);
     width: 100%;
-    padding: 2rem;
     padding-left: 0;
-    `;
+`;
 
-const TempDiv = styled.div`
-
-    background-color: white;
+const Chat_Container = styled.div`
+    /* border: 1px solid red; */    
     display: flex;
     flex: 1;
-    flex-direction: column;
-    border-radius: 30px;
     width: 100%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-    /* padding: 2rem; */
+    align-items: flex-start;
     color: #bbb;
     font-size: 20px;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
     p {
         padding: 0;
         margin: .5rem;
+    }
+`;
+// channel.js
+const ChannelContainer = styled.div`
+    /* border:1px solid red; */
+    background-color: white;
+    display: flex;
+    flex: 1;
+    width: 100%;
+    height: 100vh;
+    overflow-y: scroll;
+    /* box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,rgba(27, 31, 35, 0.15) 0px 0px 0px 1px; */
+    justify-content: center;
+`;
+const EmptyInfo = styled.p`
+    /* border:1px solid red; */
+    display: flex;
+    flex: 1;
+    /* flex-direction: column; */
+    margin: 0;
+    padding: 0;
+    justify-content:center;
+    align-items: center;
+    .MuiSvgIcon-root {
+        /* border:1px solid red; */
+        margin-right: 5px;
+        height: 32px;
+        width: 32px;
     }
 `;

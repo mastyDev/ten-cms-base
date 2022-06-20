@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <Container>
       <Head>
-        <title>MDEV-CMS</title>
+        <title>TEN | init</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Loading />
@@ -25,8 +25,10 @@ export default function Home() {
 const Container = styled.div`
   /* border: 5px dashed red; */
   display: flex;
+  width: 100%;
   height: 100vh;
   flex-direction: column;
-  justify-content: left;
+  align-items: center;
+  justify-content: center;
   padding: 0 !important;
 `;
