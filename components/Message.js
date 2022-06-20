@@ -14,7 +14,7 @@ export default function Message({ message, timestamp, author, userImage}) {
             <h4>{author}</h4>
             <span>{new Date(timestamp?.toDate()).toUTCString()}</span>
         </InfoLeft_up>
-        <Message_Left>{message}</Message_Left>
+        <Message_Left><span>{message}</span></Message_Left>
         </div>
     </Message_Container_left>
   )} else {
@@ -22,14 +22,14 @@ export default function Message({ message, timestamp, author, userImage}) {
     <Message_Container_Right>
         <div id="meta">
         <InfoRight_up><h4>{author}</h4><span>{new Date(timestamp?.toDate()).toUTCString()}</span></InfoRight_up>
-        <Message_Own>{message}</Message_Own>
+        <Message_Own><span>{message}</span></Message_Own>
         </div>
         <div id="avatar"><UserAvatar src={userImage}></UserAvatar></div>
     </Message_Container_Right>
   )}
 
 };
-// skazzo@a0.3.0.3
+// skazzo@a0.3.0.4 solved
  
 const UserAvatar = styled(Avatar)`
     margin: 0;
@@ -74,17 +74,18 @@ const InfoLeft_up = styled.div`
     }
 `;
 const Message_Left = styled.div`
-
-    background-color: var(--light-blue);
+    /* border: 1px solid red; */
     display: flex;
     justify-content: flex-start;
-    padding: .5rem 1rem;
     font-size: 18px;
     color: white;
-    border-radius: 0px 10px 10px 10px;
-    box-shadow: rgba(50, 50, 93, 0.4) 0px 2px 5px -1px, 
-                rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-
+    span {
+        background-color: var(--light-blue);
+        padding: .5rem 1rem;
+        border-radius: 0px 10px 10px 10px;
+        box-shadow: rgba(50, 50, 93, 0.4) 0px 2px 5px -1px, 
+        rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    }
 `;
 
 
@@ -100,7 +101,7 @@ margin-top: 1rem;
     }
 `;
 const InfoRight_up = styled.div`
-    /* border: 1px solid red; */
+    
     display: flex;
     align-items: flex-end;
     flex-direction: column;
@@ -116,14 +117,16 @@ const InfoRight_up = styled.div`
     }
 `;
 const Message_Own = styled.div`
-
-    background-color: var(--dark-blue);
+    /* border: 1px solid red; */
     display: flex;
     justify-content: flex-end;
-    padding: .5rem 1rem;
     font-size: 18px;
     color: white;
-    border-radius: 10px 0px 10px 10px;
-    box-shadow: rgba(50, 50, 93, 0.4) 0px 2px 5px -1px, 
-                rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    span {
+        background-color: var(--dark-blue);
+        padding: .5rem 1rem;
+        border-radius: 10px 0px 10px 10px;
+        box-shadow: rgba(50, 50, 93, 0.4) 0px 2px 5px -1px, 
+        rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    }
 `;

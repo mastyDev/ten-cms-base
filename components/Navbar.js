@@ -32,7 +32,7 @@ export default function Navbar() {
 
         <Header>
             <Logo_Container>
-                <LogoImage src={Logo}/><span>ver a0.3.0.3</span>
+                <LogoImage src={Logo}/><span>ver a0.3.0.4</span>
             </Logo_Container>
             <IconButton><MenuOpenIcon style={{color: "rgba(255, 255, 255, 0.7)"}}/></IconButton>
         </Header>
