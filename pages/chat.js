@@ -6,7 +6,7 @@ import ChannelWindow from "../components/ChannelWindow";
 import TagIcon from '@mui/icons-material/Tag';
 
 import { useSelector } from 'react-redux';
-import { selectRoomId } from '../store/chatStore';
+import { selectRoomId } from '../store/tenStore';
 
 export default function Chat() {
     const roomId = useSelector(selectRoomId)

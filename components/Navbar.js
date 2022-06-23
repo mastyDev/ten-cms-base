@@ -1,40 +1,53 @@
-import { useState } from 'react';
+import React, { useState, useContext, createContext } from 'react';
 import { Avatar, IconButton, Button } from "@material-ui/core";
 import styled from "styled-components";
 import Image from 'next/image';
 import Logo from '../public/logoDark.svg';
-import NotifyBadge from '../contexts/NotifyBadge';
 import ProfileMenuPopup from '../contexts/ProfileMenuPopup';
 
 import {useAuthState} from "react-firebase-hooks/auth";
 // import { useCollection } from "react-firebase-hooks/firestore";
-import { auth, db } from "../firebase";
+import { auth } from "../firebase";
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
-import MenuOpenIcon from '@mui/icons-material/MenuOpen';
+// import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import DownloadIcon from '@mui/icons-material/Download';
 import AnalyticsIcon from '@mui/icons-material/Analytics';
 import SearchIcon from '@mui/icons-material/Search';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import CloseIcon from '@mui/icons-material/Close';
+import {BsWindowSidebar} from 'react-icons/bs'
+import {BsWindow} from 'react-icons/bs'
+
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
+import AppContext from '../pages/_app'
 
-
-export default function Navbar() {
+export default function Navbar({sideMenu, sideButton}) {
+    // const AppContext = createContext(null); // Context API
+    // const { setSideMenu } = useContext(AppContext)
+    // const [sideMenu, setSideMenu] = useState(true);
+    
     const [profileMenu, setProfileMenu] = useState(false);
     const [user] = useAuthState(auth);
     const [search, setSearch] = useState('');
+    // if(profileMenu){
+    //     console.log(profileMenu);
+    // } else {console.log(profileMenu)}
+ 
 
     return (
     <Nav_Container>
-
+        
         <Header>
-            <Logo_Container>
-                <LogoImage src={Logo}/><span>ver a0.3.0.4</span>
-            </Logo_Container>
-            <IconButton><MenuOpenIcon style={{color: "rgba(255, 255, 255, 0.7)"}}/></IconButton>
+            <Logo_Container><LogoImage src={Logo}/><span>ver a3.1.0</span></Logo_Container>
+            <IconButton>
+            {sideMenu 
+                ?<SidebarToggleOpen onClick={()=>sideButton(false)}/>
+                :<SidebarToggleClose onClick={()=>sideButton(true)}/>
+            }
+            </IconButton>
         </Header>
 
         <Search_Container>
@@ -56,13 +69,13 @@ export default function Navbar() {
             <IconsContainer>
                     <IconButton>
                         {/* <NotifyBadge bg={'#F34141'} value={'1'}/> */}
-                        <MailDot style={{color: "var(--google-red)"}}/>
+                        <InfoDot style={{color: "var(--google-red)"}}/>
                          <MailOutlineIcon style={{color: "whitesmoke", marginTop: '10px'}}/>
                     </IconButton>
                     
                     <IconButton>
                         {/* <NotifyBadge bg={'#2699FB'} value={'1'}/> */}
-                        <BellDot style={{color: "orange"}}/>
+                        <InfoDot style={{color: "orange"}}/>
                         <NotificationsNoneIcon style={{color: "whitesmoke", marginTop: '10px'}}/>
                     </IconButton>
             </IconsContainer>
@@ -71,7 +84,8 @@ export default function Navbar() {
                 ?<ProfileMenu onClick={() => setProfileMenu(false)}>{user.displayName}<KeyboardArrowUpIcon/></ProfileMenu>
                 :<ProfileMenu onClick={() => setProfileMenu(true)}>{user.displayName}<KeyboardArrowDownIcon/></ProfileMenu>
             }
-            {profileMenu && (<ProfileMenuPopup/>)}
+            
+            {profileMenu && (<Popup_Container onClick={() => setProfileMenu(false)}><ProfileMenuPopup/></Popup_Container>)}
             </Profile_Menu>
             <Avatar_Container>
                 <FiberManualRecordIcon />
@@ -82,6 +96,17 @@ export default function Navbar() {
   )
 }
 
+const Popup_Container = styled.div`
+    /* border: 1px solid red; */
+    position: fixed;
+    display: flex;
+    top: 70px;
+    right: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: rgba(5,5,5,0);
+    height: calc(100vh - 70px);
+`;
 const Nav_Container = styled.div`
     /* border: 1px solid red; */
     background-color: var(--navbar-blue);
@@ -136,6 +161,23 @@ const Logo_Container = styled.div`
 
 const LogoImage = styled(Image)`
     border: 0;
+`;
+
+const SidebarToggleOpen = styled(BsWindowSidebar)`
+    color: rgba(255,255,255,.7);
+    /* border: 1px solid red; */
+    font-size: 24px;
+    &:hover {
+        color: white;
+    }
+`;
+const SidebarToggleClose = styled(BsWindow)`
+    color: rgba(255,255,255,.7);
+    /* border: 1px solid red; */
+    font-size: 24px;
+    &:hover {
+        color: white;
+    }
 `;
 
 const SearchBox = styled.form`
@@ -222,20 +264,13 @@ const Avatar_Container = styled.div`
 const UserAvatar = styled(Avatar)`
     border: 1px solid rgba(255, 255, 255, 0.35);
     margin: 0 .5rem;
+    /* cursor: pointer; */
 `;
 
-const MailDot = styled(FiberManualRecordIcon)`
+const InfoDot = styled(FiberManualRecordIcon)`
     position: absolute;
     z-index: 100;
     top: 15px;
     right: 0px;
-    padding: 5px;
-`;
-
-const BellDot = styled(FiberManualRecordIcon)`
-    position: absolute;
-    z-index: 100;
-    top: 15px;
-    right: 5px;
     padding: 5px;
 `;

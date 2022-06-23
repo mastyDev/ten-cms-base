@@ -6,7 +6,7 @@ import ChatInput from '../components/ChatInput';
 import Message from "./Message"
 
 import { useSelector } from "react-redux";
-import { selectRoomId } from "../store/chatStore";
+import { selectRoomId } from "../store/tenStore";
 import { useCollection, useDocument } from 'react-firebase-hooks/firestore'
 import { db } from "../firebase";
 
@@ -85,7 +85,7 @@ const Channel_Container = styled.div`
     flex: .9;
     flex-direction: column;
     height: calc(100vh - 70px);
-    border-left: 1px solid #ddd;
+    /* border-left: 1px solid #999; */
     /* box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, 
                 rgba(27, 31, 35, 0.15) 0px 0px 0px 1px; */
 `;

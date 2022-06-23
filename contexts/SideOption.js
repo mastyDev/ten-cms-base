@@ -19,7 +19,13 @@ const Option_Container = styled.div`
     width: 100%;
     align-items: center;
     padding: 0 .5rem;
-    `;
+    div {
+        /* border:1px solid red; */
+        display: flex;
+        flex:1;
+        align-items: center;
+    }
+`;
 
 const Title = styled.div`
     font-size: 15px;
@@ -39,7 +45,7 @@ const MenuButton = styled(Button)`
             background-color: whitesmoke
         }
         .MuiSvgIcon-root {
-            margin-right: 10px;
+            margin-right: 15px;
         }
     }
 `;

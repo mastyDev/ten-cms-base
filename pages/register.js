@@ -2,7 +2,7 @@ import Head from 'next/head'
 import styled from "styled-components";
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 
-export default function register() {
+export default function Register() {
   return (
     <Home_Container>
         <Head><title>TEN | Registration</title></Head>

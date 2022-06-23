@@ -1,3 +1,3 @@
 import { configureStore } from "@reduxjs/toolkit/"
-import chatReducer from "./chatStore"
-export default configureStore({ reducer: { chat: chatReducer }})
+import appReducer from "./tenStore"
+export default configureStore({ reducer: { chat: appReducer}})

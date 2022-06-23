@@ -8,7 +8,7 @@ export default function Message({ message, timestamp, author, userImage}) {
   if(author !== user.displayName) {
     return (
     <Message_Container_left>
-        <div id="avatar"><UserAvatar src={userImage}></UserAvatar></div>
+        <div id="avatar"><UserAvatar src={userImage}/></div>
         <div id="meta">
         <InfoLeft_up>
             <h4>{author}</h4>
@@ -24,7 +24,7 @@ export default function Message({ message, timestamp, author, userImage}) {
         <InfoRight_up><h4>{author}</h4><span>{new Date(timestamp?.toDate()).toUTCString()}</span></InfoRight_up>
         <Message_Own><span>{message}</span></Message_Own>
         </div>
-        <div id="avatar"><UserAvatar src={userImage}></UserAvatar></div>
+        <div id="avatar"><UserAvatar src={userImage}/></div>
     </Message_Container_Right>
   )}
 
@@ -40,7 +40,6 @@ const UserAvatar = styled(Avatar)`
         height: 45px;
         box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, 
                     rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
-
     }
 `;
 
@@ -121,7 +120,7 @@ const Message_Own = styled.div`
     display: flex;
     justify-content: flex-end;
     font-size: 18px;
-    color: white;
+    color: whitesmoke;
     span {
         background-color: var(--dark-blue);
         padding: .5rem 1rem;

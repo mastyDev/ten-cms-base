@@ -2,7 +2,7 @@ import Head from 'next/head'
 import styled from "styled-components";
 import AdminPanelSettingsOutlinedIcon from '@mui/icons-material/AdminPanelSettingsOutlined';
 
-export default function admin() {
+export default function Admin() {
   return (
     <Home_Container>
         <Head><title>TEN | Admin</title></Head>

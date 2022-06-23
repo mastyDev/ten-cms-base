@@ -67,11 +67,12 @@ const SidebarChat_Container = styled.div`
     flex: .1;
     justify-content: flex-start;
     /* flex: .2; */
-    /* height: calc(100vh - 70px); */
+    height: calc(100vh - 70px);
     min-width: 250px;
     flex-direction: column;
     /* height: 100%; */
     padding: 0 1rem;
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
     /* margin-top: 140px; */
     /* background-color: #e9e9e9; */
     span#spacer {
@@ -125,31 +126,3 @@ const CreateButton = styled(Button)`
         }
     }
 `;
-
-// const Header_Info = styled.div`
-//     /* border: 1px solid gold; */
-//     flex: 1;
-//     flex-direction: column;
-//     justify-content: center;
-//     /* align-items: center; */
-//     >h2 {
-//         /* border: 1px solid red; */
-//         margin: 0;
-//         font-size: 22px;
-//         color: #555;
-//     }
-//     >h3 {
-//         /* border: 1px solid red; */
-//         margin: 0;
-//         font-size: 16px;
-//         font-weight: 500;
-//         color: #777;
-//         align-items: center;
-        
-//     >.MuiSvgIcon-root {
-//             /* border: 1px solid red; */
-//             margin: 0px 4px -2px 2px;
-//             color: limegreen;
-//         }
-//     }
-// `;

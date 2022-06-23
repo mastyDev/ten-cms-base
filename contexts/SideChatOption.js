@@ -1,7 +1,7 @@
 import styled from "styled-components"
 // Redux
 import { useDispatch } from 'react-redux';
-import { enterRoom } from "../store/chatStore";
+import { enterRoom } from "../store/tenStore";
 // UI
 import { Button } from "@material-ui/core"
 import {HiOutlineHashtag} from "react-icons/hi"
@@ -53,7 +53,7 @@ const MenuButton = styled(Button)`
         justify-content: flex-start;
         
         &:hover {
-            background-color: white
+            /* background-color: white */
         }
         .MuiSvgIcon-root {
             /* padding: .5rem; */
